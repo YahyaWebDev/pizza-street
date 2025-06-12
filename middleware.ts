@@ -1,9 +1,15 @@
 // middleware.ts
-import { clerkMiddleware } from '@clerk/nextjs/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 
-export default clerkMiddleware({
-  publicRoutes: ['/', '/sign-in(.*)'],
-  debug: process.env.NODE_ENV === 'development'
+const isPublicRoute = createRouteMatcher([
+  '/',
+  '/sign-in(.*)',
+]);
+
+export default clerkMiddleware((auth, req) => {
+  if (!isPublicRoute(req)) {
+    auth().protect();
+  }
 });
 
 export const config = {
