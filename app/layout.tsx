@@ -16,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider authorizedParties={['https://pizza-street.vercel.app']}>
+    <ClerkProvider>
     <html lang="en">
       <body
         className={`${bricolageGrotesque.className} antialiased`}
