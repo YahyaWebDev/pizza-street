@@ -1,9 +1,9 @@
 // middleware.ts
-import { authMiddleware } from '@clerk/nextjs';
+import { clerkMiddleware } from '@clerk/nextjs/server';
 
-export default authMiddleware({
+export default clerkMiddleware({
   publicRoutes: ['/', '/sign-in(.*)'],
-  debug: true // Shows cookie errors in console
+  debug: process.env.NODE_ENV === 'development'
 });
 
 export const config = {
