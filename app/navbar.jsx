@@ -1,7 +1,9 @@
 'use client';
 import Image from "next/image"
 import Link from "next/link";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import {
+  ClerkProvider, SignInButton, SignUpButton, SignedIn,SignedOut, UserButton,
+} from '@clerk/nextjs';
 
 export default function NavBar(){
     return (
@@ -13,14 +15,14 @@ export default function NavBar(){
             height={100}
             alt="logo"
         />
-        <SignedOut>
-            <SignInButton>
-                <button className="bg-black outline-2 text-white p-2 rounded-xl shadow-[0px_0px_20px_3px_#000000] cursor-pointer hover:bg-green-500 hover:text-black transition-all duration-1000 active:bg-emerald-600">S'inscrire</button>
-            </SignInButton>
-        </SignedOut>
-        <SignedIn>
+        <ClerkProvider>
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
             <UserButton />
-        </SignedIn>
+          </SignedIn>
+        </ClerkProvider>
     </div> 
           <nav className="flex justify-center items-center flex-nowrap gap-3">
         <Link href="/pizzaCategory" className=" outline-2 p-1 rounded cursor-pointer hover:bg-emerald-600 hover:text-white active:bg-emerald-600 active:text-white transition-all duration-1000">Pizzas</Link>
