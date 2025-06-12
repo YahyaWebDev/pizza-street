@@ -2,12 +2,10 @@
 import type { NextConfig } from "next";
 
 export default {
-  domain: 'pizza-street.vercel.app', // Make sure this exactly matches your Vercel URL
+  domain: 'pizza-street.vercel.app', 
   isSatellite: true,
-  proxyUrl: '/api/clerk', // Add this proxy route
+  proxyUrl: '/api/clerk', 
   signInUrl: '/sign-in',
-  // Only for local development:
-  // dangerouslyDisableSecureWhileTesting: process.env.NODE_ENV === 'development'
 };
 export default clerkConfig;
 
